@@ -1,24 +1,13 @@
-import * as Yup from 'yup';
 import jwt from 'jsonwebtoken';
 
 import User from '../models/User';
+import storeSchema from '../validations/Session';
 import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
-    const schema = Yup.object().shape({
-      email: Yup.string()
-        .required()
-        .email(),
-      password: Yup.string().required(),
-    });
-
-    try {
-      await schema.validate(req.body, { abortEarly: false });
-    } catch (err) {
-      return res
-        .status(400)
-        .json({ error: 'Validation failed', validationErrors: err.errors });
+    if (!(await storeSchema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation failed' });
     }
 
     const { email, password } = req.body;
