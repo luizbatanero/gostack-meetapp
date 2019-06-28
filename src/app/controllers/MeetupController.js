@@ -10,7 +10,7 @@ class MeetupController {
     }
 
     if (isBefore(parseISO(req.body.date), Date.now())) {
-      return res.json({ error: "Can't create a meetup on a past date" });
+      return res.json({ error: "Can't create meetup on a past date" });
     }
 
     const meetup = await Meetup.create({
@@ -37,12 +37,32 @@ class MeetupController {
     }
 
     if (meetup.past) {
-      return res.status(400).json({ error: "Can't update a past meetup" });
+      return res.status(400).json({ error: "Can't update past meetup" });
     }
 
     await meetup.update(req.body);
 
     return res.json(meetup);
+  }
+
+  async delete(req, res) {
+    const meetup = await Meetup.findByPk(req.params.id);
+
+    if (!meetup) {
+      return res.status(400).json({ error: 'Meetup not found' });
+    }
+
+    if (meetup.user_id !== req.userId) {
+      return res.status(400).json({ error: 'Unauthorized' });
+    }
+
+    if (meetup.past) {
+      return res.status(400).json({ error: "Can't cancel past meetup" });
+    }
+
+    await meetup.destroy();
+
+    return res.send();
   }
 }
 
