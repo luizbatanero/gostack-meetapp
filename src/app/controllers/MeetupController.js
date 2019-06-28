@@ -1,9 +1,37 @@
-import { parseISO, isBefore } from 'date-fns';
+import { parseISO, isBefore, startOfDay, endOfDay } from 'date-fns';
+import { Op } from 'sequelize';
 
-import { storeSchema, updateSchema } from '../validations/Meetup';
 import Meetup from '../models/Meetup';
+import User from '../models/User';
+import { storeSchema, updateSchema } from '../validations/Meetup';
 
 class MeetupController {
+  async index(req, res) {
+    const page = req.query.page || 1;
+    const amountPerPage = 10;
+
+    const where = {};
+
+    if (req.query.date) {
+      const date = parseISO(req.query.date);
+
+      where.date = {
+        [Op.between]: [startOfDay(date), endOfDay(date)],
+      };
+    }
+
+    const meetups = await Meetup.findAll({
+      where,
+      limit: amountPerPage,
+      offset: (page - 1) * amountPerPage,
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'name', 'email'] },
+      ],
+    });
+
+    return res.json(meetups);
+  }
+
   async store(req, res) {
     if (!(await storeSchema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation failed' });
