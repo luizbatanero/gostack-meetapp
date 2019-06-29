@@ -28,28 +28,28 @@ module.exports = {
         references: {
           model: 'files',
           key: 'id',
-          allowNull: true,
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
+        allowNull: true,
       },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
           key: 'id',
-          allowNull: false,
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
+        allowNull: false,
       },
       created_at: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       updated_at: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },
