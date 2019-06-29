@@ -10,7 +10,6 @@ class Meetup extends Model {
         location: Sequelize.STRING,
         date: Sequelize.DATE,
         banner_id: Sequelize.INTEGER,
-        user_id: Sequelize.INTEGER,
         past: {
           type: Sequelize.VIRTUAL,
           get() {
@@ -31,9 +30,8 @@ class Meetup extends Model {
       as: 'banner',
     });
 
-    this.hasOne(models.User, {
-      foreignKey: 'id',
-      sourceKey: 'user_id',
+    this.belongsTo(models.User, {
+      foreignKey: 'user_id',
       as: 'user',
     });
   }
