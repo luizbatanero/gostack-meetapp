@@ -1,5 +1,4 @@
 import { Op } from 'sequelize';
-import { format } from 'date-fns';
 
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
