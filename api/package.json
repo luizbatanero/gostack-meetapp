@@ -22,6 +22,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bee-queue": "^1.2.2",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "date-fns": "^2.0.0-beta.2",
     "dotenv": "^8.0.0",
