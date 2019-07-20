@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap');
 
   * {
     margin: 0;
@@ -26,7 +26,13 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 14px 'Roboto', sans-serif;
+    font: 14px 'Titillium Web', sans-serif;
+  }
+
+  div.Toastify__toast {
+    font-family: 'Titillium Web';
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   a {

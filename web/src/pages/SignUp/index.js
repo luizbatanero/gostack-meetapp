@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import logo from '~/assets/logo.svg';
+import logo from '~/assets/logo-purple.svg';
 
 import { signUpRequest } from '~/store/modules/auth/actions';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório'),
+  name: Yup.string().required('Name is required'),
   email: Yup.string()
-    .email('Insira um e-mail válido')
-    .required('O e-mail é obrigatório'),
+    .email('Invalid e-mail')
+    .required('E-mail is required'),
   password: Yup.string()
-    .min(6, 'No mínimo 6 caracteres')
-    .required('A senha é obrigatória'),
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
 });
 
 export default function SignUp() {
@@ -30,16 +30,25 @@ export default function SignUp() {
       <img src={logo} alt="MeetApp" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="name" type="text" placeholder="Nome completo" />
-        <Input name="email" type="email" placeholder="Seu e-mail" />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Sua senha secreta"
-        />
+        <div className="input-wrapper">
+          <Input name="name" type="text" placeholder="Name" />
+          <div className="input-border" />
+        </div>
+        <div className="input-wrapper">
+          <Input name="email" type="email" placeholder="E-mail" />
+          <div className="input-border" />
+        </div>
+        <div className="input-wrapper">
+          <Input name="password" type="password" placeholder="Password" />
+          <div className="input-border" />
+        </div>
 
-        <button type="submit">Criar conta</button>
-        <Link to="/">Já tenho login</Link>
+        <button type="submit">Create account</button>
+
+        <p>
+          Already have an account?
+          <Link to="/">Login</Link>
+        </p>
       </Form>
     </>
   );

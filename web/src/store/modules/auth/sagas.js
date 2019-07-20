@@ -23,7 +23,7 @@ export function* signIn({ payload }) {
 
     history.push('/dashboard');
   } catch (err) {
-    toast.error('Falha na autenticação, verifique seus dados');
+    toast.error('Authentication failed, check your credentials.');
     yield put(signFailure());
   }
 }
@@ -41,7 +41,7 @@ export function* signUp({ payload }) {
 
     history.push('/');
   } catch (err) {
-    toast.error('Falha no cadastro, verifique seus dados');
+    toast.error('Authentication failed, check your credentials.');
 
     yield put(signFailure());
   }

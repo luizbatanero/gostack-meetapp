@@ -2,49 +2,75 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
-  height: 100%;
-  background: linear-gradient(-90deg, #7159c1, #ab59c1);
+  min-height: 100%;
+  background: #e6e7fc;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 30px;
 `;
 
 export const Content = styled.div`
   width: 100%;
   max-width: 315px;
+  margin: auto;
   text-align: center;
+  background: #fff;
+  padding: 45px 30px 30px;
+  border-radius: 4px;
+  box-shadow: 5px 10px 45px rgba(93, 97, 164, 0.25);
 
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 80px;
+
+    .input-wrapper {
+      position: relative;
+      margin: 0 0 10px;
+    }
 
     input {
-      background: rgba(0, 0, 0, 0.1);
+      width: 100%;
+      background: none;
       border: 0;
-      border-radius: 4px;
+      border-bottom: 2px solid #eee;
       height: 44px;
-      padding: 0 15px;
-      color: #fff;
-      margin: 0 0 10px;
+      padding: 0;
+      color: #444;
+      transition: border 0.2s;
+
+      &:focus ~ .input-border {
+        width: 100%;
+      }
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: #999;
       }
     }
 
+    .input-border {
+      position: absolute;
+      top: 42px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #8e92de;
+      transition: all 0.2s ease;
+    }
+
     span {
-      color: #fb6f91;
-      align-self: flex-start;
-      margin: 0 0 10px;
+      display: block;
+      color: #e65175;
+      margin: 5px 0 0;
       font-weight: bold;
+      text-align: left;
     }
 
     button {
-      margin: 5px 0 0;
+      margin: 25px 0 0;
       height: 44px;
-      background: #3b9eff;
+      background: #445ae3;
       font-weight: bold;
+      letter-spacing: 0.5px;
       color: #fff;
       border: 0;
       border-radius: 4px;
@@ -52,18 +78,37 @@ export const Content = styled.div`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.03, '#3b9eff')};
+        background: ${darken(0.045, '#445AE3')};
+      }
+
+      &:disabled {
+        cursor: wait;
+        opacity: 0.6;
       }
     }
 
+    p {
+      margin-top: 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      cursor: default;
+      color: #777;
+    }
+
     a {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 3px;
+      background: #9a68ed;
       color: #fff;
-      margin-top: 15px;
-      font-size: 16px;
-      opacity: 0.8;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
 
       &:hover {
-        opacity: 1;
+        background: ${darken(0.045, '#9a68ed')};
       }
     }
   }
