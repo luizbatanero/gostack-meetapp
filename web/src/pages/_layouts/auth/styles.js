@@ -17,11 +17,31 @@ export const Content = styled.div`
   padding: 45px 30px 30px;
   border-radius: 4px;
   box-shadow: 5px 10px 45px rgba(93, 97, 164, 0.25);
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    background: #f3f4fe;
+    top: -80px;
+    left: 0;
+    transform: skewY(-10deg);
+  }
+
+  img {
+    position: relative;
+    z-index: 2;
+  }
 
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
 
     .input-wrapper {
       position: relative;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import logo from '~/assets/logo-purple.svg';
+import logo from '~/assets/logo.png';
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
