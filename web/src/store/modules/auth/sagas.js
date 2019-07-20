@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, delay } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
@@ -8,6 +8,8 @@ import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
+    yield delay(300);
+
     const { email, password } = payload;
 
     const response = yield call(api.post, 'sessions', {
@@ -29,19 +31,27 @@ export function* signIn({ payload }) {
 }
 
 export function* signUp({ payload }) {
+  yield delay(300);
+
   try {
     const { name, email, password } = payload;
 
-    yield call(api.post, 'users', {
+    const response = yield call(api.post, 'users', {
       name,
       email,
       password,
       provider: true,
     });
 
-    history.push('/');
+    const { token, user } = response.data;
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    yield put(signInSuccess(token, user));
+
+    history.push('/dashboard');
   } catch (err) {
-    toast.error('Authentication failed, check your credentials.');
+    toast.error('Account creation failed, try again.');
 
     yield put(signFailure());
   }

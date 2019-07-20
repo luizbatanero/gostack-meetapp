@@ -38,7 +38,7 @@ export default function SignIn() {
         </div>
 
         <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Login'}
+          Login
         </button>
 
         <p>
