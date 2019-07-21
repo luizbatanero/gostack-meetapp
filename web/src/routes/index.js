@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route as BaseRoute, Redirect } from 'react-router-dom';
 import Route from './Route';
 
 import SignIn from '~/pages/SignIn';
@@ -16,6 +16,8 @@ export default function Routes() {
 
       <Route path="/dashboard" exact component={Dashboard} isPrivate />
       <Route path="/profile" exact component={Profile} isPrivate />
+
+      <BaseRoute render={() => <Redirect to="/" />} />
     </Switch>
   );
 }
