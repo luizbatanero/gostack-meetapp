@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
-import { MdAddAPhoto, MdAdd } from 'react-icons/md';
+import { MdAddAPhoto } from 'react-icons/md';
 
 import api from '~/services/api';
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   max-width: 960px;
@@ -54,51 +55,56 @@ export const MeetupsList = styled.div`
     color: #545a8f;
   }
 
-  a {
+  .loading {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: #fff;
-    border-radius: 4px;
-    opacity: 0.8;
-    transition: transform 0.3s, box-shadow 0.2s, opacity 0.2s;
-    box-shadow: 0 1px 3px rgba(93, 97, 164, 0.2);
+    justify-content: center;
+  }
+`;
 
-    + a {
-      margin-top: 10px;
-    }
+export const Meetup = styled(Link)`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+  opacity: ${props => (props.past ? 0.45 : 0.8)};
+  transition: transform 0.3s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 1px 3px rgba(93, 97, 164, 0.2);
 
-    > p {
+  + a {
+    margin-top: 10px;
+  }
+
+  > p {
+    margin: 0;
+    color: #545a8f;
+    font-size: 20px;
+  }
+
+  aside {
+    color: #777;
+
+    p {
+      display: flex;
+      align-items: center;
       margin: 0;
-      color: #545a8f;
-      font-size: 20px;
-    }
 
-    aside {
-      color: #777;
-
-      p {
-        display: flex;
-        align-items: center;
-        margin: 0;
-
-        svg {
-          margin-right: 10px;
-        }
+      svg {
+        margin-right: 10px;
       }
     }
+  }
 
-    &:hover {
-      opacity: 1;
-      transform: translateY(-2px);
-      box-shadow: 0 2px 7px rgba(93, 97, 164, 0.15);
-    }
+  &:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 7px rgba(93, 97, 164, 0.15);
+  }
 
-    &:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(93, 97, 164, 0.25);
-    }
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(93, 97, 164, 0.25);
   }
 `;
