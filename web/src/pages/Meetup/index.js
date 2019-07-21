@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 import api from '~/services/api';
@@ -20,6 +21,7 @@ export default function Meetup({ match }) {
           setLoading(false);
         }, 200);
       } catch (err) {
+        toast.error('Meetup not found');
         history.push('/');
       }
     }
