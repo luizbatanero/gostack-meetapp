@@ -25,6 +25,7 @@ export default function Profile() {
   }
 
   const schema = Yup.object().shape({
+    avatar_id: Yup.number(),
     name: Yup.string().required('Name is required'),
     email: Yup.string()
       .email('Invalid e-mail')
