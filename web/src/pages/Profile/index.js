@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
+
+import { MdExitToApp } from 'react-icons/md';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
@@ -21,33 +24,41 @@ export default function Profile() {
     dispatch(signOut());
   }
 
+  const schema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string()
+      .email('Invalid e-mail')
+      .required('E-mail is required'),
+  });
+
   return (
     <Container>
-      <Form initialData={profile} onSubmit={handleSubmit}>
+      <Form schema={schema} initialData={profile} onSubmit={handleSubmit}>
         <AvatarInput name="avatar_id" profileId={profile.id} />
 
-        <Input name="name" placeholder="Nome completo" />
-        <Input name="email" placeholder="Seu endereço de e-mail" />
+        <Input name="name" placeholder="Name" />
+        <Input name="email" placeholder="E-mail" />
 
         <hr />
 
         <Input
           type="password"
           name="oldPassword"
-          placeholder="Sua senha atual"
+          placeholder="Current password"
         />
-        <Input type="password" name="password" placeholder="Nova senha" />
+        <Input type="password" name="password" placeholder="New password" />
         <Input
           type="password"
           name="confirmPassword"
-          placeholder="Confirmação de senha"
+          placeholder="Confirm password"
         />
 
-        <button type="submit">Atualizar perfil</button>
+        <button type="submit">Update profile</button>
       </Form>
 
       <button type="submit" onClick={handleSignOut}>
-        Sair do MeetApp
+        Logout
+        <MdExitToApp color="#888" size={18} />
       </button>
     </Container>
   );

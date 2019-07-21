@@ -4,6 +4,9 @@ import { darken } from 'polished';
 export const Container = styled.div`
   max-width: 600px;
   margin: 50px auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
 
   form {
     display: flex;
@@ -11,16 +14,21 @@ export const Container = styled.div`
     margin-top: 30px;
 
     input {
-      background: rgba(0, 0, 0, 0.1);
+      background: #fff;
       border: 0;
       border-radius: 4px;
-      height: 44px;
+      height: 48px;
       padding: 0 15px;
-      color: #fff;
+      color: #515366;
       margin: 0 0 10px;
+      transition: box-shadow 0.2s;
+
+      &:focus {
+        box-shadow: 0 0 3px rgba(93, 97, 164, 0.35);
+      }
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: #999;
       }
     }
 
@@ -33,16 +41,15 @@ export const Container = styled.div`
 
     hr {
       border: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      margin: 10px 0 20px;
+      margin: 25px 0 0;
     }
 
     button {
-      margin: 5px 0 0;
-      height: 44px;
-      background: #3b9eff;
+      margin: 15px 0 0;
+      height: 52px;
+      background: #445ae3;
       font-weight: bold;
+      letter-spacing: 0.5px;
       color: #fff;
       border: 0;
       border-radius: 4px;
@@ -50,25 +57,32 @@ export const Container = styled.div`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.03, '#3b9eff')};
+        background: ${darken(0.045, '#445ae3')};
       }
     }
   }
 
   > button {
-    width: 100%;
-    margin: 10px 0 0;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-top: 15px;
     height: 44px;
-    background: #f64c75;
     font-weight: bold;
-    color: #fff;
+    background: none;
+    color: #888;
     border: 0;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background 0.2s;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+    opacity: 0.7;
+
+    svg {
+      margin-left: 10px;
+    }
 
     &:hover {
-      background: ${darken(0.08, '#f64c75')};
+      opacity: 1;
     }
   }
 `;

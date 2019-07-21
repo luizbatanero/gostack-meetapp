@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
+
+import { MdCameraAlt } from 'react-icons/md';
+
 import api from '~/services/api';
 
 import { Container } from './styles';
@@ -39,9 +42,13 @@ export default function AvatarInput({ profileId }) {
     <Container>
       <label htmlFor="avatar">
         <img
-          src={preview || `https://api.adorable.io/avatars/120/${profileId}`}
+          src={preview || `https://api.adorable.io/avatars/150/${profileId}`}
           alt=""
         />
+
+        <div className="overlay">
+          <MdCameraAlt size={36} color="#9a68ed" />
+        </div>
 
         <input
           type="file"
