@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
-import { MdCameraAlt } from 'react-icons/md';
+import { MdAddAPhoto, MdAdd } from 'react-icons/md';
 
 import api from '~/services/api';
 
@@ -47,7 +47,7 @@ export default function AvatarInput({ profileId }) {
         />
 
         <div className="overlay">
-          <MdCameraAlt size={36} color="#9a68ed" />
+          <MdAddAPhoto size={36} color="#9a68ed" />
         </div>
 
         <input
