@@ -3,63 +3,36 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: #fff;
   padding: 0 30px;
+  box-shadow: 0 0 10px rgba(93, 97, 164, 0.15);
 `;
 
 export const Content = styled.div`
-  height: 64px;
+  padding: 15px 0;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  nav {
-    display: flex;
-    align-items: center;
-
-    img {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #eee;
-    }
-
-    a {
-      font-weight: bold;
-      color: #7159c1;
-    }
+  nav img {
+    height: 57px;
+    width: auto;
   }
 
   aside {
-    display: flex;
-    align-items: center;
-  }
-`;
-
-export const Profile = styled.div`
-  display: flex;
-  margin-left: 20px;
-  padding-left: 20px;
-
-  div {
-    text-align: right;
-    margin-right: 10px;
-
-    strong {
-      display: block;
-      color: #333;
-    }
-
     a {
-      display: block;
-      margin-top: 2px;
-      font-size: 12px;
-      color: #999;
+      display: flex;
+      align-items: center;
+      color: #515363;
     }
-  }
 
-  img {
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
+    img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin-right: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+    }
   }
 `;

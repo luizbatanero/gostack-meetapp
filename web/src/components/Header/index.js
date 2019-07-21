@@ -12,16 +12,13 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <img src={logo} alt="MeetApp" />
-          <Link to="/dashboard">DASHBOARD</Link>
+          <Link to="/dashboard">
+            <img src={logo} alt="MeetApp" />
+          </Link>
         </nav>
 
         <aside>
-          <Profile>
-            <div>
-              <strong>{profile.name}</strong>
-              <Link to="/profile">Meu perfil</Link>
-            </div>
+          <Link to="/profile">
             <img
               src={
                 (profile.avatar && profile.avatar.url) ||
@@ -29,7 +26,8 @@ export default function Header() {
               }
               alt={profile.name}
             />
-          </Profile>
+            {profile.name}
+          </Link>
         </aside>
       </Content>
     </Container>
