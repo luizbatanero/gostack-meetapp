@@ -25,7 +25,7 @@ export const Content = styled.div`
     width: 100%;
     height: 200px;
     background: #f3f4fe;
-    top: -80px;
+    top: -90px;
     left: 0;
     transform: skewY(-10deg);
   }
