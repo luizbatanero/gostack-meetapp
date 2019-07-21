@@ -33,10 +33,11 @@ export const Container = styled.div`
     }
 
     span {
-      color: #fb6f91;
-      align-self: flex-start;
-      margin: 0 0 10px;
+      display: block;
+      color: #e65175;
+      margin: -5px 0 10px;
       font-weight: bold;
+      text-align: left;
     }
 
     hr {

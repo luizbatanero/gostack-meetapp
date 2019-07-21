@@ -29,6 +29,20 @@ export default function Profile() {
     email: Yup.string()
       .email('Invalid e-mail')
       .required('E-mail is required'),
+    oldPassword: Yup.string().when('password', (password, field) =>
+      password ? field.required('Current password is required') : field
+    ),
+    password: Yup.string()
+      .transform(value => (!value ? null : value))
+      .nullable()
+      .min(6, 'Password must be at least 6 characters'),
+    confirmPassword: Yup.string().when('password', (password, field) =>
+      password
+        ? field
+            .required()
+            .oneOf([Yup.ref('password')], 'Password does not match')
+        : field
+    ),
   });
 
   return (
