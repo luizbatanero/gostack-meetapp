@@ -40,7 +40,7 @@ export default function Dashboard() {
     <Container>
       <header>
         <h1>My Meetups</h1>
-        <Link to="/">
+        <Link to="meetups/create">
           <MdAddCircleOutline color="#fff" size={22} />
           New Meetup
         </Link>
@@ -60,7 +60,7 @@ export default function Dashboard() {
         {!loading &&
           meetups.map(meetup => (
             <Meetup
-              to={`/meetup/${meetup.id}`}
+              to={`/meetups/${meetup.id}`}
               key={meetup.id}
               past={meetup.past ? 1 : 0}
             >
