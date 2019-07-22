@@ -44,9 +44,15 @@ export default function BannerInput() {
       <label htmlFor="banner">
         <img src={preview} alt="" />
 
-        <div className="overlay">
+        <div className="icon-add">
           <MdAddAPhoto size={48} color="rgba(0, 0, 0, .1)" />
         </div>
+
+        {defaultValue && (
+          <div className="overlay">
+            <MdAddAPhoto size={48} color="#9a68ed" />
+          </div>
+        )}
 
         <input
           type="file"

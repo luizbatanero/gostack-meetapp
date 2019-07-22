@@ -19,9 +19,18 @@ export const Container = styled.div`
 
     &:hover {
       background: rgba(0, 0, 0, 0.085);
+
+      .overlay {
+        opacity: 1;
+
+        svg {
+          transform: none;
+          opacity: 1;
+        }
+      }
     }
 
-    .overlay {
+    .icon-add {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -30,7 +39,27 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: opacity 0.3s;
+      z-index: 2;
+
+      svg {
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: all 0.3s;
+      }
     }
 
     img {
