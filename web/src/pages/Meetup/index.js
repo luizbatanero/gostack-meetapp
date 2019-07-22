@@ -45,6 +45,10 @@ export default function Meetup({ match }) {
     loadMeetup();
   }, [id]);
 
+  function handleEdit() {
+    history.push(`/meetups/${id}/edit`);
+  }
+
   async function handleCancel() {
     try {
       await api.delete(`meetups/${id}`);
@@ -68,7 +72,7 @@ export default function Meetup({ match }) {
 
             {!meetup.past && (
               <nav>
-                <button type="button" className="edit">
+                <button type="button" className="edit" onClick={handleEdit}>
                   <MdEdit size={16} color="#fff" />
                   Edit
                 </button>

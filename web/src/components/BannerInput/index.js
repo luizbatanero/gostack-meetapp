@@ -8,10 +8,10 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 export default function BannerInput() {
-  const { registerField, error } = useField('banner_id');
+  const { defaultValue, registerField, error } = useField('banner');
 
-  const [file, setFile] = useState('');
-  const [preview, setPreview] = useState('');
+  const [file, setFile] = useState(defaultValue && defaultValue.id);
+  const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
   const ref = useRef();
 
@@ -23,7 +23,8 @@ export default function BannerInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+    // eslint-disable-next-line
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();

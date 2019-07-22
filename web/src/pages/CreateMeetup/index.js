@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { MdAddCircleOutline } from 'react-icons/md';
-
 import { toast } from 'react-toastify';
-import DatePicker from '~/components/DatePicker';
+
 import api from '~/services/api';
 import history from '~/services/history';
 
-import BannerInput from './BannerInput';
+import BannerInput from '~/components/BannerInput';
+import DatePicker from '~/components/DatePicker';
+
 import { Container } from './styles';
 
 export default function CreateMeetup() {
