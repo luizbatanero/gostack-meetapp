@@ -67,8 +67,14 @@ export const Details = styled.div`
     }
   }
 
+  main {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(93, 97, 164, 0.2);
+  }
+
   .image-wrapper {
-    border-radius: 3px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.045);
     height: 0;
@@ -86,10 +92,14 @@ export const Details = styled.div`
     }
   }
 
-  main p {
-    font-size: 16px;
-    margin: 15px 0 30px;
-    color: #545a8f;
+  .wrapper {
+    padding: 25px 30px 30px;
+
+    > p {
+      font-size: 16px;
+      margin: 0 0 30px;
+      color: #545a8f;
+    }
   }
 
   footer {
@@ -125,7 +135,7 @@ export const Subscriptions = styled.div`
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: 2px solid #e6e7fc;
+      border: 2px solid #fff;
 
       + img {
         margin-left: -10px;
@@ -137,7 +147,7 @@ export const Subscriptions = styled.div`
       background: rgba(0, 0, 0, 0.05);
       width: 40px;
       height: 40px;
-      border: 2px solid #e6e7fc;
+      border: 2px solid #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
