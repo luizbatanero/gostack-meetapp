@@ -38,13 +38,15 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <header>
-        <h1>My Meetups</h1>
-        <Link to="meetups/create">
-          <MdAddCircleOutline color="#fff" size={22} />
-          New Meetup
-        </Link>
-      </header>
+      {!loading && (
+        <header>
+          <h1>My Meetups</h1>
+          <Link to="meetups/create">
+            <MdAddCircleOutline color="#fff" size={22} />
+            New Meetup
+          </Link>
+        </header>
+      )}
 
       <MeetupsList>
         {loading && (

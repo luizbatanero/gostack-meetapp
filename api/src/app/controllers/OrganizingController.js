@@ -1,4 +1,5 @@
 import Meetup from '../models/Meetup';
+import File from '../models/File';
 
 class OrganizingController {
   async index(req, res) {
@@ -10,7 +11,15 @@ class OrganizingController {
   }
 
   async show(req, res) {
-    const meetup = await Meetup.findByPk(req.params.id);
+    const meetup = await Meetup.findByPk(req.params.id, {
+      include: [
+        {
+          model: File,
+          as: 'banner',
+          attributes: ['path', 'url'],
+        },
+      ],
+    });
 
     if (!meetup) {
       return res.status(400).json({ error: 'Meetup not found' });
