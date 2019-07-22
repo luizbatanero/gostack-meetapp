@@ -14,9 +14,32 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  nav img {
-    height: 57px;
-    width: auto;
+  nav {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 57px;
+      width: auto;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      border: 0;
+      background: none;
+      margin-left: 20px;
+      color: #777;
+
+      svg {
+        margin-right: 4px;
+        transition: transform 0.2s;
+      }
+
+      &:hover svg {
+        transform: translateX(-2px);
+      }
+    }
   }
 
   aside {

@@ -1,14 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { MdArrowBack } from 'react-icons/md';
+
+import history from '~/services/history';
 
 import logo from '~/assets/logo.png';
 import { Container, Content } from './styles';
 
-export default function Header({ match }) {
+export default function Header() {
   const profile = useSelector(state => state.user.profile);
 
-  console.log(match);
+  const {
+    location: { pathname },
+    goBack,
+  } = history;
 
   return (
     <Container>
@@ -17,6 +23,13 @@ export default function Header({ match }) {
           <Link to="/dashboard">
             <img src={logo} alt="MeetApp" />
           </Link>
+
+          {pathname !== '/dashboard' && (
+            <button type="button" onClick={goBack}>
+              <MdArrowBack size={15} />
+              back
+            </button>
+          )}
         </nav>
 
         <aside>
