@@ -39,23 +39,20 @@ export default function EditMeetup({ match }) {
   }, [id]);
 
   async function handleSubmit(data) {
-    // setLoading(true);
-    console.log(meetup);
-    console.log(data);
-
-    // try {
-    //   const response = await api.post('meetups', data);
-    //   toast.success('Meetup created successfully!');
-    //   history.push(`/meetups/${response.data.id}`);
-    // } catch (err) {
-    //   const errData = err.response.data;
-    //   toast.error(
-    //     errData && errData.error
-    //       ? `Error creating meetup: ${errData.error}`
-    //       : 'Error creating meetup, try again'
-    //   );
-    //   setLoading(false);
-    // }
+    try {
+      setLoading(true);
+      await api.put(`meetups/${id}`, data);
+      toast.success('Meetup edited successfully!');
+      history.push(`/meetups/${id}`);
+    } catch (err) {
+      const errData = err.response.data;
+      toast.error(
+        errData && errData.error
+          ? `Error editing meetup: ${errData.error}`
+          : 'Error editing meetup, try again'
+      );
+      setLoading(false);
+    }
   }
 
   const schema = Yup.object().shape({
