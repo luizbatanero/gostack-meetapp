@@ -7,12 +7,26 @@ export const Container = styled.div`
   margin: 50px auto;
   padding: 0 30px;
 
+  @media (max-width: 768px) {
+    margin: 30px auto;
+  }
+
   header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-bottom: 30px;
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+    }
 
     h1 {
       color: #9a68ed;
@@ -72,6 +86,20 @@ export const Meetup = styled(Link)`
   transition: transform 0.3s, box-shadow 0.2s, opacity 0.2s;
   box-shadow: 0 1px 3px rgba(93, 97, 164, 0.2);
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 15px 15px;
+
+    > p {
+      font-size: 18px !important;
+    }
+
+    aside {
+      margin: 10px 0 0 !important;
+    }
+  }
+
   + a {
     margin-top: 10px;
   }
@@ -84,11 +112,16 @@ export const Meetup = styled(Link)`
 
   aside {
     color: #777;
+    margin-left: 30px;
 
     p {
       display: flex;
       align-items: center;
       margin: 0;
+
+      &:first-child {
+        white-space: nowrap;
+      }
 
       svg {
         margin-right: 10px;

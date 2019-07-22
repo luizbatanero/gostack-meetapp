@@ -8,6 +8,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 768px) {
+    margin: 30px auto;
+  }
+
   form {
     display: flex;
     flex-direction: column;

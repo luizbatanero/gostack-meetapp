@@ -6,6 +6,10 @@ export const Container = styled.div`
   margin: 50px auto;
   padding: 0 30px;
 
+  @media (max-width: 768px) {
+    margin: 30px auto;
+  }
+
   .loading {
     display: flex;
     justify-content: center;
@@ -65,6 +69,16 @@ export const Details = styled.div`
         margin-right: 6px;
       }
     }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-bottom: 30px;
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+    }
   }
 
   main {
@@ -95,6 +109,10 @@ export const Details = styled.div`
   .wrapper {
     padding: 25px 30px 30px;
 
+    @media (max-width: 768px) {
+      padding: 15px 20px 20px;
+    }
+
     > p {
       font-size: 16px;
       margin: 0 0 30px;
@@ -107,6 +125,10 @@ export const Details = styled.div`
     justify-content: space-between;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     padding-top: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
 
     p {
       color: #777;
@@ -127,6 +149,12 @@ export const Details = styled.div`
 export const Subscriptions = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+  }
 
   div {
     display: flex;

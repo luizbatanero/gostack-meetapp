@@ -47,6 +47,13 @@ export const Content = styled.div`
       display: flex;
       align-items: center;
       color: #515363;
+
+      @media (max-width: 768px) {
+        font-size: 0;
+        img {
+          margin: 0;
+        }
+      }
     }
 
     img {
