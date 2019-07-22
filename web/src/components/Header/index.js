@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import logo from '~/assets/logo.png';
 import { Container, Content } from './styles';
 
-export default function Header() {
+export default function Header({ match }) {
   const profile = useSelector(state => state.user.profile);
+
+  console.log(match);
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -15,6 +15,16 @@ import { Container } from './styles';
 export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
+
+  const [oldPassword, setOldPassword] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  useEffect(() => {
+    setOldPassword('');
+    setPassword('');
+    setConfirmPassword('');
+  }, [profile]);
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
@@ -60,12 +70,22 @@ export default function Profile() {
           type="password"
           name="oldPassword"
           placeholder="Current password"
+          value={oldPassword}
+          onChange={e => setOldPassword(e.target.value)}
         />
-        <Input type="password" name="password" placeholder="New password" />
+        <Input
+          type="password"
+          name="password"
+          placeholder="New password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
         <Input
           type="password"
           name="confirmPassword"
           placeholder="Confirm password"
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}
         />
 
         <button type="submit">Update profile</button>
