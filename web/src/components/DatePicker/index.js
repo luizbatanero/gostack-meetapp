@@ -34,6 +34,7 @@ export default function DatePicker({ name, placeholder }) {
         dateFormat="dd/MM/yyyy - HH:mm"
         ref={ref}
         placeholderText={placeholder}
+        autoComplete="off"
       />
       {error && <span>{error}</span>}
     </>
