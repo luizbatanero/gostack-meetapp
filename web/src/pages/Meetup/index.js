@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt-BR';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -31,8 +30,7 @@ export default function Meetup({ match }) {
           subscriptions: response.data.subscriptions,
           formattedDate: format(
             parseISO(response.data.meetup.date),
-            "d 'de' MMMM 'de' yyyy', às' HH'h'mm",
-            { locale: pt }
+            "dd/MM/Y - HH'h'mm"
           ),
         });
 
@@ -110,7 +108,7 @@ export default function Meetup({ match }) {
                           style={{
                             zIndex: 10 - index,
                           }}
-                          key={index}
+                          key={String(index)}
                           src={
                             sub.user.avatar
                               ? sub.user.avatar.url

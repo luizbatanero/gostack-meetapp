@@ -12,6 +12,7 @@
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "react-loader-spinner": "^2.3.0",

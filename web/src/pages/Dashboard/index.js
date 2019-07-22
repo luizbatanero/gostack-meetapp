@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt-BR';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 
@@ -21,9 +20,7 @@ export default function Dashboard() {
       const data = response.data.map(meetup => {
         return {
           ...meetup,
-          formattedDate: format(parseISO(meetup.date), "dd/MM/Y 'às' HH'h'mm", {
-            locale: pt,
-          }),
+          formattedDate: format(parseISO(meetup.date), "dd/MM/Y - HH'h'mm"),
         };
       });
 
