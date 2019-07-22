@@ -35,9 +35,7 @@ export default function Meetup({ match }) {
           ),
         });
 
-        setTimeout(() => {
-          setLoading(false);
-        }, 200);
+        setLoading(false);
       } catch (err) {
         toast.error('Meetup not found');
         history.push('/');

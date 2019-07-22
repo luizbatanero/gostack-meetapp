@@ -25,9 +25,7 @@ export default function Dashboard() {
       });
 
       setMeetups(data);
-      setTimeout(() => {
-        setLoading(false);
-      }, 200);
+      setLoading(false);
     }
 
     loadMeetups();

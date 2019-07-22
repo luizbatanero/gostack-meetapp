@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all, delay } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
@@ -8,8 +8,6 @@ import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
-    yield delay(300);
-
     const { email, password } = payload;
 
     const response = yield call(api.post, 'sessions', {
@@ -31,8 +29,6 @@ export function* signIn({ payload }) {
 }
 
 export function* signUp({ payload }) {
-  yield delay(300);
-
   try {
     const { name, email, password } = payload;
 
