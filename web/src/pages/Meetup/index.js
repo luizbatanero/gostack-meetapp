@@ -47,6 +47,16 @@ export default function Meetup({ match }) {
     loadMeetup();
   }, [id]);
 
+  async function handleCancel() {
+    try {
+      await api.delete(`meetups/${id}`);
+      toast.success('Meetup canceled succesfully!');
+      history.push('/dashboard');
+    } catch (err) {
+      toast.error('Error canceling meetup, try again');
+    }
+  }
+
   return (
     <Container>
       {loading ? (
@@ -65,7 +75,7 @@ export default function Meetup({ match }) {
                   Edit
                 </button>
 
-                <button type="button" className="cancel">
+                <button type="button" className="cancel" onClick={handleCancel}>
                   <MdDeleteForever size={20} color="#fff" />
                   Cancel
                 </button>
