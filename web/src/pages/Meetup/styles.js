@@ -95,7 +95,6 @@ export const Details = styled.div`
   footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     padding-top: 20px;
 
@@ -115,4 +114,53 @@ export const Details = styled.div`
   }
 `;
 
-export const Subscriptions = styled.div``;
+export const Subscriptions = styled.div`
+  display: flex;
+  align-items: center;
+
+  div {
+    display: flex;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #e6e7fc;
+
+      + img {
+        margin-left: -10px;
+      }
+    }
+
+    .dots {
+      margin-left: -10px;
+      background: rgba(0, 0, 0, 0.05);
+      width: 40px;
+      height: 40px;
+      border: 2px solid #e6e7fc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      div {
+        width: 3px;
+        height: 3px;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  span {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #777;
+
+    strong {
+      font-size: 14px;
+      color: #9a68ed;
+    }
+  }
+`;

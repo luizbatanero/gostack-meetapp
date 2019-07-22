@@ -27,9 +27,10 @@ export default function Meetup({ match }) {
       try {
         const response = await api.get(`organizing/${id}`);
         setMeetup({
-          ...response.data,
+          ...response.data.meetup,
+          subscriptions: response.data.subscriptions,
           formattedDate: format(
-            parseISO(response.data.date),
+            parseISO(response.data.meetup.date),
             "d 'de' MMMM 'de' yyyy', às' HH'h'mm",
             { locale: pt }
           ),
@@ -93,15 +94,45 @@ export default function Meetup({ match }) {
           <footer>
             <div className="info">
               <p>
-                <MdDateRange size={18} color="#445ae3" />
+                <MdDateRange size={18} color="#9a68ed" />
                 {meetup.formattedDate}
               </p>
               <p>
-                <MdLocationOn size={18} color="#445ae3" />
+                <MdLocationOn size={18} color="#9a68ed" />
                 {meetup.location}
               </p>
             </div>
-            <Subscriptions>subscriptions</Subscriptions>
+            {meetup.subscriptions.length >= 1 && (
+              <Subscriptions>
+                <div>
+                  {meetup.subscriptions.slice(0, 5).map((sub, index) => (
+                    <img
+                      style={{
+                        zIndex: 10 - index,
+                      }}
+                      key={index}
+                      src={
+                        sub.user.avatar
+                          ? sub.user.avatar.url
+                          : `https://api.adorable.io/avatars/50/${sub.user.id}`
+                      }
+                      alt={sub.user.name}
+                    />
+                  ))}
+                  {meetup.subscriptions.length > 5 && (
+                    <div className="dots">
+                      <div />
+                      <div />
+                      <div />
+                    </div>
+                  )}
+                </div>
+                <span>
+                  <strong>{meetup.subscriptions.length}</strong> subscription
+                  {meetup.subscriptions.length > 1 && 's'}
+                </span>
+              </Subscriptions>
+            )}
           </footer>
         </Details>
       )}

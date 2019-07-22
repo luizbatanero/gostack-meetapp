@@ -1,5 +1,7 @@
 import Meetup from '../models/Meetup';
 import File from '../models/File';
+import User from '../models/User';
+import Subscription from '../models/Subscription';
 
 class OrganizingController {
   async index(req, res) {
@@ -29,7 +31,31 @@ class OrganizingController {
       return res.status(400).json({ error: 'Unauthorized' });
     }
 
-    return res.json(meetup);
+    const subscriptions = await Subscription.findAll({
+      where: {
+        meetup_id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['id', 'name'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['path', 'url'],
+            },
+          ],
+        },
+      ],
+      attributes: [],
+    });
+
+    return res.json({
+      meetup,
+      subscriptions,
+    });
   }
 }
 
