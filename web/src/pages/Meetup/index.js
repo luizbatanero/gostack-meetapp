@@ -9,6 +9,7 @@ import {
   MdDateRange,
   MdLocationOn,
 } from 'react-icons/md';
+import nl2br from 'react-nl2br';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -88,7 +89,7 @@ export default function Meetup({ match }) {
             </div>
 
             <div className="wrapper">
-              <p>{meetup.description}</p>
+              <p>{nl2br(meetup.description)}</p>
               <footer>
                 <div className="info">
                   <p>

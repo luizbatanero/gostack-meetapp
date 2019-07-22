@@ -10,6 +10,7 @@ import MeetupController from './app/controllers/MeetupController';
 import OrganizingController from './app/controllers/OrganizingController';
 import SubscriptionController from './app/controllers/SubscriptionController';
 import AvatarController from './app/controllers/AvatarController';
+import BannerController from './app/controllers/BannerController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -31,5 +32,6 @@ routes.get('/organizing/:id', OrganizingController.show);
 routes.get('/subscriptions', SubscriptionController.index);
 
 routes.post('/upload/avatar', upload.single('file'), AvatarController.store);
+routes.post('/upload/banner', upload.single('file'), BannerController.store);
 
 export default routes;

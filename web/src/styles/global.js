@@ -27,7 +27,7 @@ export default createGlobalStyle`
     background: #e6e7fc;
   }
 
-  body, input, button {
+  body, input, textarea, button {
     font: 14px 'Titillium Web', sans-serif;
   }
 
@@ -47,6 +47,10 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  .react-datepicker__input-container {
+    display: block !important;
   }
 
   .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {

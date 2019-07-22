@@ -38,7 +38,9 @@ class MeetupController {
     }
 
     if (isBefore(parseISO(req.body.date), Date.now())) {
-      return res.json({ error: "Can't create meetup on a past date" });
+      return res
+        .status(400)
+        .json({ error: "Can't create meetup on a past date" });
     }
 
     const meetup = await Meetup.create({
