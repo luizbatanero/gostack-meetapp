@@ -22,7 +22,7 @@ export const Details = styled.div`
 
     h1 {
       color: #9a68ed;
-      font-weight: 400;
+      font-weight: 300;
       letter-spacing: 0.5px;
       font-size: 28px;
     }

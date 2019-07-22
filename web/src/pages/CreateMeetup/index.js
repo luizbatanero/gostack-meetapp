@@ -53,7 +53,7 @@ export default function CreateMeetup() {
 
         <button type="submit" disabled={loading}>
           <MdAddCircleOutline size={22} color="#fff" />
-          Create Meetup
+          Create
         </button>
       </Form>
     </Container>

@@ -16,10 +16,9 @@ export const Container = styled.div`
 
     h1 {
       color: #9a68ed;
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: 0.5px;
       font-size: 28px;
-      text-transform: uppercase;
     }
 
     a {

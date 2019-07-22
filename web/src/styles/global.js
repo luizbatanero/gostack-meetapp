@@ -5,7 +5,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700&display=swap');
 
   * {
     margin: 0;

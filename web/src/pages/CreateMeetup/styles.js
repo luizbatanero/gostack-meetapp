@@ -48,7 +48,7 @@ export const Container = styled.div`
     > button {
       margin: 10px 0 0;
       align-self: flex-end;
-      background: #9a68ed;
+      background: #445ae3;
       font-weight: bold;
       letter-spacing: 0.5px;
       color: #fff;
@@ -65,7 +65,7 @@ export const Container = styled.div`
       }
 
       &:hover {
-        background: ${darken(0.045, '#9a68ed')};
+        background: ${darken(0.045, '#445ae3')};
       }
 
       &:disabled {
