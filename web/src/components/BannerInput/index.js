@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
+import { toast } from 'react-toastify';
 
 import { MdAddAPhoto } from 'react-icons/md';
 
@@ -32,12 +33,23 @@ export default function BannerInput() {
 
     data.append('file', e.target.files[0]);
 
-    const response = await api.post('upload/banner', data);
+    try {
+      const response = await api.post('upload/banner', data);
 
-    const { id, url } = response.data;
+      const { id, url } = response.data;
 
-    setFile(id);
-    setPreview(url);
+      setFile(id);
+      setPreview(url);
+    } catch (err) {
+      const { data } = err.response;
+      toast.error(
+        `Error: ${
+          data.error && data.error.message
+            ? data.error.message
+            : 'Internal server error'
+        }`
+      );
+    }
   }
 
   return (
