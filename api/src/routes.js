@@ -15,6 +15,8 @@ import BannerController from './app/controllers/BannerController';
 const routes = new Router();
 const upload = multer(multerConfig);
 
+routes.get('/', (req, res) => res.send(':)'));
+
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
