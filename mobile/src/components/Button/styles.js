@@ -8,6 +8,12 @@ export const Container = styled(RectButton)`
 
   align-items: center;
   justify-content: center;
+
+  ${({ secondary }) =>
+    secondary &&
+    `
+    background: #f64c75;
+  `}
 `;
 
 export const Text = styled.Text`

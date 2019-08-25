@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.SafeAreaView.attrs({
+  elevation: 2,
+})`
   background: #fff;
   justify-content: center;
   align-items: center;

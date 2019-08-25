@@ -3,12 +3,14 @@ import { Op } from 'sequelize';
 
 import Meetup from '../models/Meetup';
 import User from '../models/User';
+import File from '../models/File';
+
 import { storeSchema, updateSchema } from '../validations/Meetup';
 
 class MeetupController {
   async index(req, res) {
     const page = req.query.page || 1;
-    const amountPerPage = 10;
+    const amountPerPage = 3;
 
     const where = {};
 
@@ -20,16 +22,23 @@ class MeetupController {
       };
     }
 
-    const meetups = await Meetup.findAll({
+    const meetups = await Meetup.findAndCountAll({
       where,
       limit: amountPerPage,
       offset: (page - 1) * amountPerPage,
+      order: [['date']],
       include: [
         { model: User, as: 'user', attributes: ['id', 'name', 'email'] },
+        { model: File, as: 'banner', attributes: ['id', 'path', 'url'] },
       ],
     });
 
-    return res.json(meetups);
+    const total_pages = Math.ceil(meetups.count / amountPerPage);
+
+    return res.json({
+      total_pages,
+      ...meetups,
+    });
   }
 
   async store(req, res) {
