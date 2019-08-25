@@ -22,12 +22,14 @@ export default function Meetup({ data, handleRegister, handleCancel }) {
           <Icon name="location-on" size={15} color="#999" />
           <InfoText>{data.location}</InfoText>
         </InfoRow>
-        <InfoRow last>
+        <InfoRow last={!data.past}>
           <Icon name="person" size={15} color="#999" />
           <InfoText>Organized by: {data.user.name}</InfoText>
         </InfoRow>
 
-        {handleRegister && <Button onPress={handleRegister}>Subscribe</Button>}
+        {handleRegister && !data.past && (
+          <Button onPress={handleRegister}>Subscribe</Button>
+        )}
 
         {handleCancel && (
           <Button onPress={handleCancel} secondary>
