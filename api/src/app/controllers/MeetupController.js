@@ -10,7 +10,7 @@ import { storeSchema, updateSchema } from '../validations/Meetup';
 class MeetupController {
   async index(req, res) {
     const page = req.query.page || 1;
-    const amountPerPage = 3;
+    const amountPerPage = 10;
 
     const where = {};
 
