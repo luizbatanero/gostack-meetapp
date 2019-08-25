@@ -37,17 +37,19 @@ class SubscriptionController {
     const user = await User.findByPk(req.userId);
 
     if (!meetup) {
-      return res.status(400).json({ error: 'Meetup not found' });
+      return res.status(400).json({ error: 'Meetup not found.' });
     }
 
     if (meetup.user_id === req.userId) {
       return res
         .status(400)
-        .json({ error: "Can't subscribe to your own meetup" });
+        .json({ error: "You can't subscribe to your own meetup." });
     }
 
     if (meetup.past) {
-      return res.status(400).json({ error: "Can't subscribe to past meetups" });
+      return res
+        .status(400)
+        .json({ error: "You can't subscribe to past meetups." });
     }
 
     const userAlreadySubscribed = await Subscription.findOne({
@@ -60,7 +62,7 @@ class SubscriptionController {
     if (userAlreadySubscribed) {
       return res
         .status(400)
-        .json({ error: 'User is already subscribed to this meetup' });
+        .json({ error: 'You are already subscribed to this meetup.' });
     }
 
     const sameDateSubscriptionExists = await Subscription.findOne({
@@ -78,7 +80,7 @@ class SubscriptionController {
 
     if (sameDateSubscriptionExists) {
       return res.status(400).json({
-        error: 'User is already subscribed for a meetup on the same date',
+        error: 'You are already subscribed for a meetup on the same date.',
       });
     }
 
