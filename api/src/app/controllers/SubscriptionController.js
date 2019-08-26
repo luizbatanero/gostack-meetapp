@@ -3,6 +3,7 @@ import { Op } from 'sequelize';
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
 import User from '../models/User';
+import File from '../models/File';
 
 import Queue from '../../lib/Queue';
 import NewSubscriptionMail from '../jobs/NewSubscriptionMail';
@@ -22,6 +23,10 @@ class SubscriptionController {
               [Op.gt]: new Date(),
             },
           },
+          include: [
+            { model: User, as: 'user', attributes: ['id', 'name', 'email'] },
+            { model: File, as: 'banner', attributes: ['id', 'path', 'url'] },
+          ],
         },
       ],
       order: [['meetup', 'date', 'ASC']],
@@ -95,6 +100,20 @@ class SubscriptionController {
     });
 
     return res.json(subscription);
+  }
+
+  async delete(req, res) {
+    const subscription = await Subscription.findByPk(req.params.id);
+
+    if (!subscription) {
+      return res.status(400).json({
+        message: 'You are not subscribed to this meetup.',
+      });
+    }
+
+    await subscription.destroy();
+
+    return res.send();
   }
 }
 

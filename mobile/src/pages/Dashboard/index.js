@@ -64,7 +64,7 @@ function Dashboard({ isFocused }) {
       await api.post(`meetups/${id}/subscriptions`);
       Alert.alert('Succcess', 'You have subscribed to this meetup!');
     } catch (error) {
-      const message = String(error.response.data.error);
+      const message = error.response.data.error;
       Alert.alert('Error', message);
     }
   }

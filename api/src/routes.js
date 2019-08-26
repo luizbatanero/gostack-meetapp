@@ -32,6 +32,7 @@ routes.post('/meetups/:id/subscriptions', SubscriptionController.store);
 routes.get('/organizing', OrganizingController.index);
 routes.get('/organizing/:id', OrganizingController.show);
 routes.get('/subscriptions', SubscriptionController.index);
+routes.delete('/subscriptions/:id', SubscriptionController.delete);
 
 routes.post('/upload/avatar', upload.single('file'), AvatarController.store);
 routes.post('/upload/banner', upload.single('file'), BannerController.store);
