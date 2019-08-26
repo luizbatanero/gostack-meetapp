@@ -4,7 +4,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { format, parseISO } from 'date-fns';
 
 import Button from '~/components/Button';
-import { Container, Banner, Info, Title, InfoRow, InfoText } from './styles';
+import {
+  Container,
+  Banner,
+  Info,
+  Title,
+  InfoRow,
+  InfoText,
+  CancelButton,
+} from './styles';
 
 export default function Meetup({ data, handleRegister, handleCancel }) {
   return (
@@ -32,9 +40,9 @@ export default function Meetup({ data, handleRegister, handleCancel }) {
         )}
 
         {handleCancel && (
-          <Button onPress={handleCancel} secondary>
+          <CancelButton onPress={handleCancel}>
             Cancel subscription
-          </Button>
+          </CancelButton>
         )}
       </Info>
     </Container>
@@ -43,6 +51,7 @@ export default function Meetup({ data, handleRegister, handleCancel }) {
 
 Meetup.propTypes = {
   data: PropTypes.shape({
+    past: PropTypes.bool.isRequired,
     date: PropTypes.string.isRequired,
     banner: PropTypes.shape({
       url: PropTypes.string.isRequired,

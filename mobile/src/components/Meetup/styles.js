@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import Button from '~/components/Button';
+
 export const Container = styled.View.attrs({
   elevation: 2,
 })`
@@ -46,4 +48,8 @@ export const InfoText = styled.Text`
   font-size: 14px;
   color: #888;
   margin-left: 6px;
+`;
+
+export const CancelButton = styled(Button)`
+  background: #f64c75;
 `;
